@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Order Food{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-danger text-white text-center py-4">
+                    <h2>Order Delicious Food</h2>
+                    <p class="mb-0">Place your order in seconds</p>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Customer Name</label>
+                            <input type="text"
+                                   name="name"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text"
+                                   name="phone"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Select Menu Item</label>
+
+                            <select name="menu" class="form-select">
+
+                                {% for item in menu_items %}
+                                    <option value="{{ item.id }}">
+                                        {{ item.name }} - ₹{{ item.price }}
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Quantity</label>
+                            <input type="number"
+                                   name="quantity"
+                                   value="1"
+                                   min="1"
+                                   class="form-control">
+                        </div>
+
+                        <button class="btn btn-danger w-100 py-2">
+                            Place Order
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

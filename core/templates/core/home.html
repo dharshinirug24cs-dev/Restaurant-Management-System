@@ -1,0 +1,154 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1 class="display-3 fw-bold">
+                    Delicious Food <br>
+                    Delivered Fresh
+                </h1>
+
+                <p class="lead mt-4">
+                    Experience premium dining with our Restaurant Management System.
+                    Reserve tables, order delicious food, and enjoy the best service.
+                </p>
+
+                <a href="#" class="btn btn-warning btn-lg me-3">
+                    Order Now
+                </a>
+
+                <a href="#" class="btn btn-outline-light btn-lg">
+                    Reserve Table
+                </a>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800"
+                     class="img-fluid rounded shadow-lg">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section id="menu" class="container py-5">
+    <div class="row text-center">
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="bi bi-cup-hot-fill icon"></i>
+
+                <h3>Fresh Food</h3>
+
+                <p>Prepared using premium quality ingredients.</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="bi bi-truck icon"></i>
+
+                <h3>Fast Delivery</h3>
+
+                <p>Lightning fast delivery to your doorstep.</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <i class="bi bi-star-fill icon"></i>
+
+                <h3>Top Rated</h3>
+
+                <p>Trusted by hundreds of happy customers.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Today's Special -->
+
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Today's Special</h2>
+        <p>Freshly prepared dishes from our kitchen.</p>
+    </div>
+
+    <div class="row">
+
+        {% for item in menu_items %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card food-card">
+
+                {% if item.image %}
+<img src="{{ item.image.url }}" class="card-img-top" style="height:250px; object-fit:cover;">
+{% else %}
+<img src="https://via.placeholder.com/600x400?text=No+Image" class="card-img-top">
+{% endif %}
+
+                <div class="card-body">
+
+                    <h4>{{ item.name }}</h4>
+
+                    <p>{{ item.category }}</p>
+
+                    <h5 class="text-danger">₹{{ item.price }}</h5>
+
+                    <a href="#" class="btn btn-danger w-100">
+                        Order Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center">
+            <h4>No Menu Items Available</h4>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

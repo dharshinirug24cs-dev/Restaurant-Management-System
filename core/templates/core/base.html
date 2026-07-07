@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Restaurant Management{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            🍽️ Food Palace
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                   <a class="nav-link" href="#menu">Menu</a>
+                </li>
+
+                <li class="nav-item">
+                   <a class="nav-link" href="{% url 'reservation' %}">Reservation</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'order' %}">Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'inventory' %}">Inventory</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- Main Content -->
+{% block content %}
+{% endblock %}
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h3>🍽️ Food Palace</h3>
+
+<p>
+Serving delicious food with love and quality.
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h4>Quick Links</h4>
+
+<ul class="list-unstyled">
+
+<li><a href="/" class="text-white text-decoration-none">Home</a></li>
+
+<li><a href="#" class="text-white text-decoration-none">Menu</a></li>
+
+<li><a href="#" class="text-white text-decoration-none">Reservation</a></li>
+
+</ul>
+
+</div>
+
+<div class="col-md-4">
+
+<h4>Contact</h4>
+
+<p>📍 Chennai, India</p>
+
+<p>📞 +91 9876543210</p>
+
+<p>✉ info@foodpalace.com</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="text-center">
+
+© 2026 Food Palace | Restaurant Management System
+
+</div>
+
+</div>
+
+</footer>

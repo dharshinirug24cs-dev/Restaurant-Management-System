@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Table Reservation{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-danger text-white text-center py-4">
+                    <h2>Reserve Your Table</h2>
+                    <p class="mb-0">Book your table in advance</p>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Customer Name</label>
+                            <input type="text"
+                                   name="name"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text"
+                                   name="phone"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Reservation Date</label>
+                            <input type="date"
+                                   name="date"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Reservation Time</label>
+                            <input type="time"
+                                   name="time"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Table Number</label>
+
+                           <select name="table" class="form-select">
+
+    {% for table in tables %}
+        <option value="{{ table.id }}">
+            Table {{ table.table_number }} ({{ table.capacity }} Seats)
+        </option>
+    {% endfor %}
+
+                          </select>
+
+                        </div>
+
+                        <button class="btn btn-danger w-100 py-2">
+                            Reserve Table
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
